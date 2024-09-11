@@ -11,7 +11,13 @@ public class ProductContext: DbContext {
 
     protected override void OnModelCreating(ModelBuilder builder) {
 
-       
+        builder.Entity<Produto>()
+            .HasOne(produto => produto.Categoria)
+            .WithMany(categoria => categoria.Produtos)
+            .HasForeignKey(produto => produto.CategoriaId)
+             .OnDelete(DeleteBehavior.Restrict);
+        ;
+
         builder.Entity<Endereco>()
             .HasOne(endereco => endereco.Cliente)
             .WithOne(cliente => cliente.Endereco)
@@ -22,5 +28,7 @@ public class ProductContext: DbContext {
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<Cliente> clientes { get; set; }
     public DbSet<Endereco> enderecos { get; set; }
+
+    public DbSet<Categoria> categorias { get; set; }
 
 }
