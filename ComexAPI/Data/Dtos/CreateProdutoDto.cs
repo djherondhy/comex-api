@@ -18,4 +18,8 @@ public class CreateProdutoDto {
     [Required(ErrorMessage = "A Quantidade é obrigatório")]
     [Range(0, int.MaxValue, ErrorMessage = "O valor deve ser maior que zero")]
     public int Quantidade { get; set; }
+
+    public int CategoriaId { get; set; }
+
+  
 }

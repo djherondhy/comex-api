@@ -21,4 +21,7 @@ public class Produto {
     [Range(0, int.MaxValue, ErrorMessage = "O valor deve ser maior que zero")]
     public int Quantidade { get; set; }
 
+    public int CategoriaId { get; set; }
+    public virtual Categoria Categoria { get; set; }
+
 }

@@ -14,7 +14,10 @@ builder.Services.AddDbContext<ProductContext>(
     opts => opts.UseLazyLoadingProxies()
     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options => {
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
