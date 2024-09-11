@@ -8,6 +8,9 @@ namespace ComexAPI.Profiles {
             CreateMap<CreateProdutoDto, Produto>();
             CreateMap<UpdateProdutoDto, Produto>();
             CreateMap<Produto, ReadProdutoDto>();
+
+
+          
         }
     }
 }

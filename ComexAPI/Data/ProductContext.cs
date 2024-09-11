@@ -9,6 +9,18 @@ public class ProductContext: DbContext {
 
     }
 
+    protected override void OnModelCreating(ModelBuilder builder) {
+
+       
+        builder.Entity<Endereco>()
+            .HasOne(endereco => endereco.Cliente)
+            .WithOne(cliente => cliente.Endereco)
+            .OnDelete(DeleteBehavior.Restrict);
+
+    }
+
     public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Cliente> clientes { get; set; }
+    public DbSet<Endereco> enderecos { get; set; }
 
 }
